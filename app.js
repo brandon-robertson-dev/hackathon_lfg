@@ -11,7 +11,7 @@ const app = express()
 
 const pageRouter = require("./routes/page_routes")
 const userRouter = require("./routes/user_routes")
-const authRouter = require("./routes/auth_routes")
+const postRouter = require('./routes/post_routes')
 
 app.use(express.static("public"))
 
@@ -42,6 +42,6 @@ mongoose.connect(
 
 app.use('/pages', pageRouter)
 app.use("/users", userRouter)
-app.use('/users', authRouter)
+app.use("/posts", postRouter)
 
 app.listen(port, () => console.log(`It's working on ${port}`))
