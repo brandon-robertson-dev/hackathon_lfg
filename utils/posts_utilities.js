@@ -13,8 +13,10 @@ function getPostByIdUtil(req) {
 // adds post to db = makePost
 function addPostUtil(req) {
   let date = Date.now()
+  let username = req.user.username
   req.body.create_date = date
   req.body.modified_date = date
+  req.body.username = username
   return new Post(req.body)
 }
 
@@ -22,7 +24,8 @@ function addPostUtil(req) {
 async function addCommentUtil(req) {
   let post = await Post.findById(req.params.postId)
   let newComment = {
-    username: req.body.username,
+    username: req.user.username,
+    userId: req.user._id,
     comment: req.body.comment
   }
   post.comments.push(newComment)
@@ -44,9 +47,6 @@ function updatePostUtil(req) {
   })
 }
 
-function getNewPostFormUtil(req) {
-}
-
 // // helper for testing
 // function loadData(file) {
 // 	dataFile = file
@@ -60,4 +60,4 @@ function getNewPostFormUtil(req) {
 // 	return parseInt(lastId) + 1
 // }
 
-module.exports = {getNewPostFormUtil, getAllPostsUtil, getPostByIdUtil, addPostUtil, addCommentUtil, deletePostUtil, updatePostUtil}
+module.exports = {getAllPostsUtil, getPostByIdUtil, addPostUtil, addCommentUtil, deletePostUtil, updatePostUtil}

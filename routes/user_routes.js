@@ -5,14 +5,20 @@ const { authRedirect, authorise } = require('../middleware/auth_middleware')
 const {
   registerCreate,
   registerNew,
-  logout
+  logout,
+  loginCreate,
+  loginNew
 } = require('../controllers/auth_controller')
 
-router.get('/register', registerNew)
+router.get('/register', authRedirect, registerNew)
 
 router.post('/register', registerCreate)
 
 router.get('/logout', logout)
+
+router.get('/login', authRedirect, loginNew)
+
+router.post('/login', loginCreate)
 
 router.get("/:id", user_controller.getUser)
 

@@ -1,4 +1,5 @@
-const {newCommentFormUtil, getAllPostsUtil, getPostByIdUtil, addPostUtil, deletePostUtil, updatePostUtil, addCommentUtil} = require("../utils/posts_utilities")
+const {getAllPostsUtil, getPostByIdUtil, addPostUtil, deletePostUtil, updatePostUtil, addCommentUtil} = require("../utils/posts_utilities")
+const { checkIfUserLoggedIn } = require('../middleware/auth_middleware')
 
 // gets all posts = getAllPosts
 function getAllPostsCont(req,res) {
@@ -11,7 +12,7 @@ function getAllPostsCont(req,res) {
         error: err.message
       })
     }
-    res.render('posts/view_all', {data: posts})
+    checkIfUserLoggedIn(req, res, 'posts/view_all', posts)
   })
 }
 
@@ -22,8 +23,7 @@ function getPostByIdCont(req,res) {
         res.status(400);
         return res.send("Post not found")
     }
-    console.log(post)
-    res.render('posts/view_single', post)
+    checkIfUserLoggedIn(req, res, 'posts/view_single', post)
   })
 }
 
@@ -50,7 +50,8 @@ function addCommentCont(req, res) {
 }
 
 function getNewPostFormCont(req, res) {
-  res.render('posts/new_post')
+  // res.render('posts/new_post')
+  checkIfUserLoggedIn(req, res, 'posts/new_post', null)
 }
 
 function newCommentFormCont(req, res) {
@@ -59,8 +60,9 @@ function newCommentFormCont(req, res) {
         res.status(400);
         return res.send("Post not found");
     }
-    console.log(post)
-    res.render('posts/new_comment', post)
+    // console.log(post)
+    // res.render('posts/new_comment', post)
+    checkIfUserLoggedIn(req, res, 'posts/new_comment', post)
   })
 }
 
@@ -74,6 +76,7 @@ function deletePostCont(req, res) {
       })
     }
     res.sendStatus(204)
+    res.redirect('/posts')
   })
 }
 
@@ -86,7 +89,7 @@ function updatePostCont(req, res) {
         error: err.message
       })
     }
-    res.send(post)
+    checkIfUserLoggedIn(req, res, 'posts/view_single', post)
   })
 }
 

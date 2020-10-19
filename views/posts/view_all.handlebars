@@ -1,6 +1,8 @@
 <div class='row'>
   <h2 class="col text-center">All Posts</h2>
-  <a href='/posts/new' class="col text-center"><button class='btn btn-primary'>New Post</button></a>
+  {{#if username}}
+    <a href='/posts/new' class="col text-center"><button class='btn btn-primary'>New Post</button></a>
+  {{/if}}
 </div>
 <div class='card-deck'>
   {{#each data}}

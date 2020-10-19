@@ -1,6 +1,5 @@
-const user = require('../models/user')
 const UserModel = require('../models/user')
-const { addUser } = require('../utils/auth_utilities')
+const passport = require('passport')
 
 function registerNew(req, res) {
   res.render('authentication/register')
@@ -8,27 +7,38 @@ function registerNew(req, res) {
 
 async function registerCreate(req, res) {
   const { username, email, password } = req.body
-  console.log(req.body)
-  try{
-    const user = await UserModel.create({ username, email, password })
-    req.user = user
-    res.redirect(`${user.id}`)
-  }
-  catch(err){
-    console.log(err)
-  }
+  const user = await UserModel.create({ username, email, password })
+  req.login(user, (err) => {
+    if(err) {
+      return next(err)
+    }
+    res.redirect('/posts')
+  })
 }
-
-
 
 function logout(req, res) {
   req.session.destroy(() => {
-    res.redirect('/')
+    res.redirect('/posts')
   })
+}
+
+function loginNew(req, res) {
+  res.render('authentication/login')
+}
+
+function loginCreate(req, res, next) {
+  const loginFunc = passport.authenticate('local',
+  {
+    successRedirect: '/posts',
+    failureRedirect: 'user/login'
+  })
+  loginFunc(req, res, next)
 }
 
 module.exports = {
   registerNew,
   registerCreate,
   logout,
+  loginNew,
+  loginCreate
 }
