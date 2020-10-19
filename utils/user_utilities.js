@@ -1,5 +1,5 @@
 const User = require("../models/user")
-const mongoose = require('mongoose')
+const Post = require("../models/post")
 
 const getUserProfile = function(req) {
   return User.findById(req.params.id)
@@ -13,7 +13,7 @@ const editUserProfile = function(req) {
 }
 
 const deleteUserUtil = function(id) {
-  return post.findByIdAndRemove(id)
+  return User.findByIdAndRemove(id)
 }
 module.exports = {
   getUserProfile,

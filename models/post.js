@@ -22,12 +22,11 @@ const Post = new Schema({
     type: String,
 		required: true
   },
-  category: String,
-    comments: [{
-        username: String,
-        comment: String
-    }],
-	category: String
+  comments: [{
+      username: String,
+      userId: String,
+      comment: String
+  }],
 })
 
 module.exports = mongoose.model("Post", Post)

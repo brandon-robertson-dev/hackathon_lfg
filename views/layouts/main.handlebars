@@ -12,11 +12,11 @@
 <body>
   <nav>
     <a href="/posts">Home</a>
-    <a href="/users/{{user._id}}">Profile</a>
-    <a href="">Groups</a>
-    {{#if user}}
+    {{#if username}}
+      <a href="/users/{{id}}">Profile</a>
+      <a href="">Groups</a>
       <a href="/users/logout">Logout</a>
-      <p>{{user.username}} is logged in</p>
+      <p>{{username}} is logged in</p>
     {{else}}
       <a href="/users/login">Login</a>
     {{/if}}
