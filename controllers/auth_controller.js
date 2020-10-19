@@ -12,14 +12,14 @@ async function registerCreate(req, res) {
   try{
     const user = await UserModel.create({ username, email, password })
     req.user = user
-    console.log(user)
-    console.log('YOU ARE HERE')
-    res.redirect(`${user._id}`)
+    res.redirect(`${user.id}`)
   }
   catch(err){
     console.log(err)
   }
 }
+
+
 
 function logout(req, res) {
   req.session.destroy(() => {
