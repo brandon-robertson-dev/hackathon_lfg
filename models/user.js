@@ -14,12 +14,13 @@ const User = new Schema({
     type: String,
     require: true
   },
-  characters: {
-    type: Array
-  },
-  groups: {
-    type: Array
-  },
+  characters: [{
+    name: String,
+    class: String
+  }],
+  groups: [{
+    groupName: String
+  }],
   comments: [{
     username: String,
     comment: String
