@@ -1,0 +1,11 @@
+<h2>{{title}}</h2>
+<a href='/posts'>Back to all</a>
+<div>
+  <p><em>written by {{username}}</em></p>
+  <p>{{content}}</p>
+  <a href='/posts/{{_id}}/new_comment' class="col text-center"><button class='btn btn-primary'>New Comment</button></a>
+  {{#each comments}}
+    <p><strong>{{username}}</strong> commented:</p>
+    <p>{{comment}}</p>
+  {{/each}}
+</div>

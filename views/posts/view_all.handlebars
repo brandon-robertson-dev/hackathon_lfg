@@ -1,0 +1,20 @@
+<div class='row'>
+  <h2 class="col text-center">All Posts</h2>
+  <a href='/posts/new' class="col text-center"><button class='btn btn-primary'>New Post</button></a>
+</div>
+<div class='card-deck'>
+  {{#each data}}
+  <div class='card'>
+    <div class='card-body'>
+      <h4 class='card-title'>{{title}}</h4>
+      <p class='card-text'><em>written by {{username}}</em></p>
+      <p class='card-text'>{{content}}</p>
+      {{#each comments}}
+          <p class='card-text'><em>{{username}} commented:</em></p>
+          <p class='card-text'>{{comment}}</p>
+      {{/each}}
+      <a href='/posts/{{_id}}' class='card-link'>Show Post</a>
+    </div>
+  </div>
+  {{/each}}
+</div>

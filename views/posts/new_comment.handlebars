@@ -1,0 +1,19 @@
+<h2>{{title}}</h2>
+<a href='/posts'>Back to all</a>
+<div>
+  <p><em>written by {{username}}</em></p>
+  <p>{{content}}</p>
+</div>
+<form action='/posts/{{_id}}/comments' method='post'>
+  <label for='username'>USERNAME: </label>
+  <br>
+  <input type='text' id='username' name='username'>
+  <br>
+  <br>
+  <label for='comment'>COMMENT: </label>
+  <br>
+  <textarea type='text' id='comment' name='comment' rows='6' cols='40'></textarea>
+  <br>
+  <br>
+  <input type='submit' value='Add Comment'>
+</form>
