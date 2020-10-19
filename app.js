@@ -1,27 +1,27 @@
 const express = require('express')
-const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
-const passport = require('passport')
-const LocalStrategy = require('passport-local')
-const mongoStore = require('connect-mongo')
-const session = require('express-session')
-const exhandle = require('express-handlebars')
+const bodyParser = require('body-parser')
 const cors = require('cors')
 const mongoose = require('mongoose')
+const exhandle = require('express-handlebars')
+
 const port = process.env.port || 3000
 
+const app = express()
 
-const authRouter = require("./routes/auth_routes")
 const pageRouter = require("./routes/page_routes")
 const userRouter = require("./routes/user_routes")
+const authRouter = require("./routes/auth_routes")
+
+app.use(express.static("public"))
+
+app.engine('handlebars', exhandle({ defaultLayout: 'main', runtimeOptions: { allowProtoPropertiesByDefault: true, allowProtoMethodsByDefault: true }}))
+app.set('view engine', 'handlebars')
 
 app.use(cors())
 app.use(bodyParser.json())
-
-app.use(express.json())
-app.use(express.urlencoded({
-  extended:true
-}))
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser())
 
 const dbConn = 'mongodb://localhost/dndapp'
 mongoose.connect(
@@ -40,11 +40,8 @@ mongoose.connect(
   }
 )
 
-app.use('/users', authRouter)
 app.use('/pages', pageRouter)
 app.use("/users", userRouter)
-
-app.engine('handlebars', exhandle())
-app.set('view engine', 'handlebars')
+app.use('/users', authRouter)
 
 app.listen(port, () => console.log(`It's working on ${port}`))

@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const user_controller = require("../controllers/user_controllers")
 
+
 router.get("/:id", user_controller.getUser)
 
 router.get("/:id/edit", user_controller.updateUser)
