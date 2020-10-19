@@ -19,7 +19,20 @@ async function registerCreate(req, res) {
   }
 }
 
+function loginNew(req, res) {
+  res.render('authentication/login')
+}
 
+function loginCreate(req, res) {
+  const {email, password} = req.body
+  try {
+    User.findOne({ where: {email: `${email}`}}).then(function (user) {
+      if (!user) {
+        res.redirect('/login');
+      } else if (!)
+    })
+  }
+}
 
 function logout(req, res) {
   req.session.destroy(() => {
@@ -31,4 +44,6 @@ module.exports = {
   registerNew,
   registerCreate,
   logout,
+  loginNew,
+  loginCreate
 }
