@@ -4,7 +4,8 @@ const UserModel = require('../models/user');
 const { post } = require('../routes/page_routes');
 const {
   getUserProfile,
-  editUserProfile
+  editUserProfile,
+  deleteUserUtil
 } = require('../utils/user_utilities')
 
 const getUser = function(req, res) {
@@ -42,7 +43,15 @@ const editUser = function(req, res) {
 }
 
 const deleteUser = function(req, res) {
-    res.send("yay")
+  deleteUserUtil(req.params.id).exec((err, user) => {
+    if(err){
+      res.status(500)
+      return res.json({
+        error: err.message
+      })
+    }
+    res.sendStatus(204)
+  })
 }
 
 
