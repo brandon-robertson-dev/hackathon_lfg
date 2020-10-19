@@ -12,7 +12,9 @@ async function registerCreate(req, res) {
   try{
     const user = await UserModel.create({ username, email, password })
     req.user = user
-    res.redirect('../pages/dashboard')
+    console.log(user)
+    console.log('YOU ARE HERE')
+    res.redirect(`${user._id}`)
   }
   catch(err){
     console.log(err)

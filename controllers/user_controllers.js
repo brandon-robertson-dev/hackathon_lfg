@@ -54,9 +54,6 @@ const deleteUser = function(req, res) {
   })
 }
 
-
-
-
 module.exports = {
     getUser,
     editUser,
