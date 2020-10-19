@@ -1,4 +1,4 @@
-const {newCommentFormUtil, getAllPostsUtil, getPostByIdUtil, addPostUtil, deletePostUtil, updatePostUtil, addCommentUtil} = require("../utils/posts_utilities")
+const {getAllPostsUtil, getPostByIdUtil, addPostUtil, deletePostUtil, updatePostUtil, addCommentUtil} = require("../utils/posts_utilities")
 
 // gets all posts = getAllPosts
 function getAllPostsCont(req,res) {
@@ -11,7 +11,7 @@ function getAllPostsCont(req,res) {
         error: err.message
       })
     }
-    res.render('posts/view_all', {data: posts})
+    res.render('posts/view_all', {user: req.user, data: posts})
   })
 }
 
@@ -23,6 +23,7 @@ function getPostByIdCont(req,res) {
         return res.send("Post not found")
     }
     console.log(post)
+    console.log(req.user)
     res.render('posts/view_single', post)
   })
 }
