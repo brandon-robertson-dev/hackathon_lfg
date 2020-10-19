@@ -7,11 +7,20 @@ const mongoStore = require('connect-mongo')
 const session = require('express-session')
 // const exhandle = require('express-handlebars')
 const cors = require('cors')
+const userRouter = require("./routes/user_routes")
 const mongoose = require('mongoose')
 const port = process.env.port || 3000
 
-const app = express()
 
+const app = express()
+app.use(express.json())
+app.use(express.urlencoded({
+    extended: true
+}))
+app.use(cors())
+app.use(bodyParser.json())
+
+app.use("/users", userRouter)
 // app.engine('handlebars', exhandle())
 // app.set('view engine', 'handlebars')
 
