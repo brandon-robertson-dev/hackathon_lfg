@@ -13,79 +13,47 @@ function getCharacterByIdUtil(req) {
 
 // adds Chars to db = makeChar
 function addCharsUtil(req) {
-  let date = Date.now()
-  let name = req.Character.name
-  let age = req.Character.age
-  let race = req.Character.race
-  let dndClass = req.Character.class.class
-  let level = req.Character.class.level
-  let hit_die = req.Character.class.hit_die
-  let strength = req.Character.AbilityScores.Strength
-  let dexterity = req.Character.AbilityScores.Dexterity
-  let intelligence = req.Character.AbilityScores.Intelligence
-  let constitution = req.Character.AbilityScores.Constitution
-  let wisdom = req.Character.AbilityScores.Wisdom
-  let charisma = req.Character.AbilityScores.Charisma
-  let arcana = req.Character.Skills.Arcana
-  let acrobatics = req.Character.Skills.Arcobatics
-  let animalhandling = req.Character.Skills.AnimalHandling 
-  let athletics = req.Character.Skills.Athletics
-  let deception = req.Character.Skills.Deception
-  let history = req.Character.Skills.History
-  let insight = req.Character.Skills.Insight
-  let intimidation = req.Character.Skills.Intimidation
-  let investigation = req.Character.Skills.Investiation
-  let medicine = req.Character.Skills.Medicine
-  let nature = req.Character.Skills.Nature
-  let perception = req.Character.Skills.Perception 
-  let performance = req.Character.Skills.Performance 
-  let persuasion = req.Character.Skills.Persuasion
-  let religion = req.Character.Skills.Religion
-  let sleightofhand = req.Character.Skills.SleightOfHand
-  let stealth = req.Character.Skills.Stealth
-  let survival = req.Character.Skills.Survival
-  let lang1 = req.Character.Languages.First
-  let lang2 = req.Character.Languages.Second
-  let lang3 = req.Character.Languages.Third
-  let lang4 = req.Character.Languages.Four
-  let lang5 = req.Character.Language.Five
-  req.body.create_date = date
-  req.body.modified_date = date
-  req.body.name = name
-  req.body.age = age 
-  req.body.race = race
-  req.body.class = dndClass
-  req.body.level = level 
-  req.body.hit_die = hit_die
-  req.body.strength = strength
-  req.body.dexterity = dexterity
-  req.body.constitution = constitution
-  req.body.wisdom = wisdom
-  req.body.charisma = charisma
-  req.body.intelligence = intelligence
-  req.body.arcana = arcana
-  req.body.acrobatics = acrobatics
-  req.body.animalhandling = animalhandling
-  req.body.athletics = athletics
-  req.body.deception = deception
-  req.body.history = history 
-  req.body.insight = insight
-  req.body.intimidation = intimidation
-  req.body.investigation = investigation
-  req.body.medicine = medicine
-  req.body.nature = nature
-  req.body.perception = perception
-  req.body.performance = performance
-  req.body.persuasion = persuasion
-  req.body.religion = religion
-  req.body.sleightofhand = sleightofhand
-  req.body.stealth = stealth
-  req.body.survival = survival
-  req.body.lang1 = lang1
-  req.body.lang2 = lang2 
-  req.body.lang3 = lang3
-  req.body.lang4 = lang4
-  req.body.lang5 = lang5  
+  // console.log('This is inside charsUtil:', req.body)
+  //name, age, race, class, str, dex, const, int, wis, char, skills, languages
+   //references not working for reasons?
+     // let dndClass = req.Character.class.class_type
+  let skills = req.body.Skills
+  // let languages = req.body.Character.Languages
+  // let abilities = req.body.Character.AbilityScores
+  
+  //destructured values not working?
+  // const {race, name, age} = req.body.Character
+  
+  //not currently being used
+  // const {level, hit_die} = req.body.Character.class_type
+  
+  const data = {
+    race: req.body.race,
+    name: req.body.name,
+    age: req.body.age,
+    strength: req.body.Strength,
+    dexterity: req.body.Dexterity,
+    intelligence: req.body.Intelligence,
+    constitution: req.body.Constitution,
+    wisdom: req.body.Wisdom,
+    charisma: req.body.Charisma,
+    
+    // lang1: languages[0].First,
+    // lang2: languages[0].Second,
+    // lang3: languages[0].Third,
+    // lang4: languages[0].Four,
+    // lang5: languages[0].Five,
+    class_type: req.body.class
+  }
+
+  // let i = 0
+let charSkills = skills.map((skill) => {
+  return [data][skill]: skill
+})
+console.log('skills: ', data[skills])
+
+  req.body = Object.assign(data)
+  // console.log('this is inside the new req:', req.body)
   return new Character(req.body)
 }
 

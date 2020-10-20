@@ -6,8 +6,8 @@ const Character = new Schema({
   name: String,
   age: Number,
    race: String,
-   class: {
-    class: String,
+   class_type: {
+    class_type: String,
     level: Number,
     hit_die: Number
    },

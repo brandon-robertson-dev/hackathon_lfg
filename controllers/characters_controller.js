@@ -37,19 +37,22 @@ const getCharacter = function(req, res) {
 }
 
 const newCharacter = function(req,res) {
-    console.log(json)
+    // console.log(json)
     checkIfUserLoggedIn(req, res, 'char/form', json)
-}
-
-const addCharacter = function(req,res) {
+  }
+  
+  const addCharacter = function(req,res) {
+    console.log("This is the req:",req)
+    
   addCharsUtil(req).save((err, character) => {
-    if (err) {
-      res.status(400)
-      return res.send("Character not saved")
-    }
-    // console.log(user)
-    // res.render('users/form', user)
-    checkIfUserLoggedIn(req, res, 'char/form', character)
+    console.log("This is the char:", character)
+    //  if (err) {
+  //     res.status(400)
+  //     return res.send("Character not saved")
+  //   }
+  //   // console.log(user)
+  //   // res.render('users/form', user)
+  //   checkIfUserLoggedIn(req, res, 'char/form', character)
   })
 }
 

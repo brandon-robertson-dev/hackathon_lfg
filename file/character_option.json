@@ -28,7 +28,7 @@
 			"name": "Tiefling"
 		}
     ],
-    "class": [
+    "class_type": [
         {
 			"name": "Barbarian"
 		},
