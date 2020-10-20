@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const mongooseBcrypt = require('mongoose-bcrypt')
 const Schema = mongoose.Schema
 
 const User = new Schema({
@@ -19,7 +20,9 @@ const User = new Schema({
   },
   characters: [{
     name: String,
-    class: String
+    class: String,
+    race: String,
+    health: Integer,
   }],
   groups: [{
     groupName: String
@@ -28,7 +31,8 @@ const User = new Schema({
     username: String,
     comment: String
   }]
-})
+}); 
+
 
 User.plugin(require('mongoose-bcrypt'))
 module.exports = mongoose.model('User', User)
