@@ -1,5 +1,5 @@
 const { checkIfUserLoggedIn } = require('../middleware/auth_middleware')
-const { getUserProfile, editUserProfile, deleteUserUtil,} = require('../utils/user_utilities')
+const { getUserComments, getUserProfile, editUserProfile, deleteUserUtil,} = require('../utils/user_utilities')
 
 const getUser = function(req, res) {
   getUserProfile(req).exec((err, user) => {
@@ -8,6 +8,16 @@ const getUser = function(req, res) {
       return res.send("User not found")
     }
     checkIfUserLoggedIn(req, res, 'users/user', user)
+  })
+}
+
+const getComments = function(req, res) {
+  getUserComments(req).exec((err, comments) => {
+    if(err) {
+      res.status(400)
+      return res.send("Comments not found")
+    }
+    checkIfUserLoggedIn(req, res, 'blank', comments)
   })
 }
 
@@ -51,4 +61,5 @@ module.exports = {
   editUser,
   updateUser,
   deleteUser,
+  getComments
 }
