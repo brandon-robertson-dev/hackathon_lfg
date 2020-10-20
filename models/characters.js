@@ -30,7 +30,7 @@ const Character = new Schema({
        Insight: Number,
        Intimidation: Number,
        Investigation: Number,
-       Meditation: Number,
+       Medicine: Number,
        Nature: Number,
        Perception: Number,
        Performance: Number,
