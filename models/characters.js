@@ -4,41 +4,41 @@ const Schema = mongoose.Schema
 
 const Character = new Schema({
   name: String,
-  age: Integer,
+  age: Number,
    race: String,
    class: {
     class: String,
-    level: Integer,
-    hit_die: Integer
+    level: Number,
+    hit_die: Number
    },
    subClass: String,
    AbilityScores: [{
-       Strength: Integer,
-       Dexterity: Integer,
-       Intelligence: Integer,
-       Constitution: Integer,
-       Wisdom: Integer,
-       Charisma: Integer
+       Strength: Number,
+       Dexterity: Number,
+       Intelligence: Number,
+       Constitution: Number,
+       Wisdom: Number,
+       Charisma: Number
    }],
    Skills: [{
-       Arcana: Integer,
-       Acrobatics: Integer,
-       AnimalHandling: Integer,
-       Atheletics: Integer,
-       Deception: Integer,
-       History: Integer,
-       Insight: Integer,
-       Intimidation: Integer,
-       Investigation: Integer,
-       Meditation: Integer,
-       Nature: Integer,
-       Perception: Integer,
-       Performance: Integer,
-       Persuasion: Integer,
-       Religion: Integer,
-       SleightOfHand: Integer,
-       Stealth: Integer,
-       Survival: Integer
+       Arcana: Number,
+       Acrobatics: Number,
+       AnimalHandling: Number,
+       Atheletics: Number,
+       Deception: Number,
+       History: Number,
+       Insight: Number,
+       Intimidation: Number,
+       Investigation: Number,
+       Meditation: Number,
+       Nature: Number,
+       Perception: Number,
+       Performance: Number,
+       Persuasion: Number,
+       Religion: Number,
+       SleightOfHand: Number,
+       Stealth: Number,
+       Survival: Number
    }],
    Languages: [{
        First: String,
@@ -57,5 +57,5 @@ const Character = new Schema({
 }); 
 
 
-User.plugin(require('mongoose-bcrypt'))
-module.exports = mongoose.model('User', User)
+Character.plugin(require('mongoose-bcrypt'))
+module.exports = mongoose.model('Character', Character)
