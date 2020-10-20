@@ -1,4 +1,4 @@
-<form action='/character' method='post'>
+<form action='/characters/new' method='post'>
  <div>
      <label>Name</label>
      <input type='type' name='name'/>
@@ -10,7 +10,7 @@
  <div>
      <label>Select Race</label>
      <select name="race">
-         {{#each race}}
+         {{#each data.race}}
          <option value={{name}}>{{name}}</option>
          {{/each}}
      </select>
@@ -18,7 +18,7 @@
  <div>
      <label>Select Class</label>
      <select name="class">
-         {{#each class}}
+         {{#each data.class}}
          <option value="{{name}}">{{name}}</option>
          {{/each}}
      </select>
@@ -35,7 +35,7 @@
  <div>
     <label>Select Skills</label>
      <select name="Skills">
-         {{#each Skills}}
+         {{#each data.Skills}}
          <option value="{{name}}">{{name}}</option>
          {{/each}}
      </select>
@@ -43,7 +43,7 @@
  <div>
       <label>Select Languages</label>
      <select name="Languages">
-         {{#each Languages}}
+         {{#each data.Languages}}
          <option value={{name}}>{{name}}</option>
          {{/each}}
      </select>

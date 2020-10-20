@@ -6,12 +6,16 @@ const express = require('express');
 const router = express.Router();
 const CharacterModel = require('../models/characters');
 const { checkIfUserLoggedIn } = require('../middleware/auth_middleware')
-const character_utl = require('../utils/characters_utilities');
+const {
+  getAllCharactersUtil,
+  getCharacterByIdUtil,
+  addCharsUtil,
+} = require('../utils/characters_utilities');
 const characters = require('../models/characters');
 const json = require("../file/character_option.json")
 
 const getCharacters = function(req, res) {
-  character_utl.getAllCharactersUtl(req).exec((err, character) => {
+  getAllCharactersUtil(req).exec((err, character) => {
     if (err) {
       res.status(400)
       return res.send("Characters not found")
@@ -23,7 +27,7 @@ const getCharacters = function(req, res) {
 }
 
 const getCharacter = function(req, res) {
-    character_utl.getCharactersByIdUtl(req).exec((err, character) => {
+  getCharacterByIdUtil(req).exec((err, character) => {
         if (err) {
             res.status(400)
             return res.send("Character not found")
@@ -38,7 +42,7 @@ const newCharacter = function(req,res) {
 }
 
 const addCharacter = function(req,res) {
-  character_utl.getCharsUtl(req).save((err, character) => {
+  addCharsUtil(req).save((err, character) => {
     if (err) {
       res.status(400)
       return res.send("Character not saved")

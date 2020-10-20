@@ -25,7 +25,7 @@ router.get('/:id', getCharacter)
 // CREATE
 // POST on '/characters'
 // Creates a new post
-router.post('/', addCharacter)
+router.post('/new', addCharacter)
 
 // DELETE
 // DELETE on '/characters/:id'

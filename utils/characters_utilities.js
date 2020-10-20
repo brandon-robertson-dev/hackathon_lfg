@@ -116,3 +116,8 @@ function updatePostUtil(req) {
   })
 }
 
+module.exports = {
+  getAllCharactersUtil,
+  getCharacterByIdUtil,
+  addCharsUtil,
+}
