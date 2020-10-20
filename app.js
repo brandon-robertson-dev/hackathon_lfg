@@ -16,7 +16,7 @@ const port = process.env.port || 3000
 const app = express()
 
 const storage = multer.diskStorage({
-  destination: './files/',
+  destination: './public/images',
   filename: function(req, file, cb){
     cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
   }
@@ -28,7 +28,6 @@ const upload = multer({
 
 const userRouter = require("./routes/user_routes")
 const postRouter = require('./routes/post_routes')
-const user = require('./models/user')
 
 app.use(express.static("public"))
 
@@ -77,12 +76,15 @@ app.post("/upload", (req, res) => {
     if(err){
       console.log(err)
     } else {
-      console.log(req.user)
-      let user = req.user
-      user.profile_picture = req.file.path
-      console.log(user)
-      const updatedUser = await User.findByIdAndUpdate(user._id, user, { new: true })
-      res.redirect('users/' + updatedUser._id)
+      async function updateUserProfile(req, res) {
+        console.log(req.file)
+        let user = req.user
+        user.profile_picture = req.file.filename
+        console.log(user)
+        const updatedUser = await User.findByIdAndUpdate(user._id, user, { new: true })
+        res.redirect('users/' + updatedUser._id)
+      }
+      updateUserProfile(req, res)
     }
   })
 })
