@@ -17,7 +17,9 @@ const User = new Schema({
   },
   characters: [{
     name: String,
-    class: String
+    class: String,
+    race: String,
+    health: Integer,
   }],
   groups: [{
     groupName: String
@@ -26,12 +28,8 @@ const User = new Schema({
     username: String,
     comment: String
   }]
-}, 
-get validPassword(password) {
-      return bcrypt.compareSync(password, this.password);
-    }
-  }
-);
+}); 
+
 
 User.plugin(require('mongoose-bcrypt'))
 module.exports = mongoose.model('User', User)

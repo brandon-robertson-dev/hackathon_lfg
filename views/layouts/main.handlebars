@@ -11,12 +11,15 @@
 </head>
 <body>
   <nav>
-    <a href="">Home</a>
-    <a href="">Profile</a>
+    <a href="/posts">Home</a>
+    <a href="/users/{{user._id}}">Profile</a>
     <a href="">Groups</a>
-    <a href="">Logout</a>
-
-  <h1>DND APP: Stay awhile and listen</h1>
+    {{#if user}}
+      <a href="/users/logout">Logout</a>
+      <p>{{user.username}} is logged in</p>
+    {{else}}
+      <a href="/users/login">Login</a>
+    {{/if}}
   </nav>
   {{{body}}}
 

@@ -1,6 +1,5 @@
 const User = require("../models/user")
 const mongoose = require('mongoose')
-const { post } = require("../routes/page_routes")
 
 const getUserProfile = function(req) {
   return User.findById(req.params.id)

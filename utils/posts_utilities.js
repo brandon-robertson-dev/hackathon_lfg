@@ -44,9 +44,6 @@ function updatePostUtil(req) {
   })
 }
 
-function getNewPostFormUtil(req) {
-}
-
 // // helper for testing
 // function loadData(file) {
 // 	dataFile = file
@@ -60,4 +57,4 @@ function getNewPostFormUtil(req) {
 // 	return parseInt(lastId) + 1
 // }
 
-module.exports = {getNewPostFormUtil, getAllPostsUtil, getPostByIdUtil, addPostUtil, addCommentUtil, deletePostUtil, updatePostUtil}
+module.exports = {getAllPostsUtil, getPostByIdUtil, addPostUtil, addCommentUtil, deletePostUtil, updatePostUtil}

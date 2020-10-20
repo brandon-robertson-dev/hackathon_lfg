@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const UserModel = require('../models/user');
-const { post } = require('../routes/page_routes');
 const {
   getUserProfile,
   editUserProfile,
