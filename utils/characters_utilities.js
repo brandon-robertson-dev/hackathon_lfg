@@ -1,71 +1,6 @@
 const Character = require("../models/characters")
 const fetch = require("node-fetch")
 
-
-const fetchDNDRace = (url) => {
-    fetch("https://www.dnd5eapi.co/api/races/")
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(console.log("Error"))
-}
-
-const fetchDNDClass = (url) => {
-    fetch("https://www.dnd5eapi.co/api/classes/")
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(console.log("Error"))
-
-}
-
-const fetchDNDSubClass = (url) => {
-    fetch("https://www.dnd5eapi.co/api/subclasses/")
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(console.log("Error"))
-
-}
-
-const fetchDNDAbilityScore = (url) => {
-    fetch("https://www.dnd5eapi.co/api/ability-scores/")
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(console.log("Error"))
-
-}
-
-const fetchDNDSkills = (url) => {
-    fetch("https://www.dnd5eapi.co/api/skills/")
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(console.log("Error"))
-
-}
-
-const fetchDNDLanguages = (url) => {
-    fetch("https://www.dnd5eapi.co/api/languages/")
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(console.log("Error"))
-
-}
-
-const fetchDNDSpells = (url) => {
-    fetch("https://www.dnd5eapi.co/api/spells/")
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(console.log("Error"))
-
-}
-
-const fetchDNDFeatures = (url) => {
-    fetch("https://www.dnd5eapi.co/api/features")
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(console.log("Error"))
-
-}
-
-
 // gets all chars = getChars
 function getAllCharactersUtil(req) {
 	return Character.find()
@@ -76,7 +11,7 @@ function getCharacterByIdUtil(req) {
   return Character.findById(req.params.id)
 }
 
-// adds post to db = makePost
+// adds Chars to db = makeChar
 function addCharsUtil(req) {
   let date = Date.now()
   let name = req.Character.name
@@ -85,7 +20,6 @@ function addCharsUtil(req) {
   let dndClass = req.Character.class.class
   let level = req.Character.class.level
   let hit_die = req.Character.class.hit_die
-  let subClass = req.Character.subClass
   let strength = req.Character.AbilityScores.Strength
   let dexterity = req.Character.AbilityScores.Dexterity
   let intelligence = req.Character.AbilityScores.Intelligence
@@ -115,8 +49,6 @@ function addCharsUtil(req) {
   let lang3 = req.Character.Languages.Third
   let lang4 = req.Character.Languages.Four
   let lang5 = req.Character.Language.Five
-  let spells = req.Character.Spells 
-  let features = req.Character.Features
   req.body.create_date = date
   req.body.modified_date = date
   req.body.name = name
@@ -125,7 +57,6 @@ function addCharsUtil(req) {
   req.body.class = dndClass
   req.body.level = level 
   req.body.hit_die = hit_die
-  req.body.subClass = subClass
   req.body.strength = strength
   req.body.dexterity = dexterity
   req.body.constitution = constitution
@@ -155,8 +86,6 @@ function addCharsUtil(req) {
   req.body.lang3 = lang3
   req.body.lang4 = lang4
   req.body.lang5 = lang5  
-  req.body.spells = spells
-  req.body.features = features
   return new Character(req.body)
 }
 

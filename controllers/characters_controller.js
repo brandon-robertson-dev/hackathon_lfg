@@ -27,7 +27,7 @@ const getCharacter = function(req, res) {
             res.status(400)
             return res.send("Character not found")
         }
-        checkIfUserLoggedIn(req, res, 'char/characters', character)
+        checkIfUserLoggedIn(req, res, 'char/character_single', character)
     })
 }
 
