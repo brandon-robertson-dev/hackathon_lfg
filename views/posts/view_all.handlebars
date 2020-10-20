@@ -4,16 +4,18 @@
     <a href='/posts/new' class="col text-center"><button class='btn btn-primary'>New Post</button></a>
   {{/if}}
 </div>
-<div class='card-deck'>
-  {{#each data}}
-  <div class='card'>
-    <div class='card-body'>
-      <h4 class='card-title'>{{title}}</h4>
-      <p class='card-text'><em>written by {{username}}</em></p>
-      <p class='card-text'>{{content}}</p>
-      <p class='card-text'><em>This post has {{comments.length}} comments</em></p>
-      <a href='/posts/{{_id}}' class='card-link'>Show Post</a>
+<div class="marginsides">
+  <div class='card-deck'>
+    {{#each data}}
+    <div class='card special-card'>
+      <div class='card-body'>
+        <h4 class='card-title'>{{title}}</h4>
+        <p class='card-text'><em>written by {{username}}</em></p>
+        <p class='card-text'>{{content}}</p>
+        <p class='card-text'><em>This post has {{comments.length}} comments</em></p>
+        <a href='/posts/{{_id}}' class='card-link'>Show Post</a>
+      </div>
     </div>
+    {{/each}}
   </div>
-  {{/each}}
 </div>
