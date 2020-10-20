@@ -22,7 +22,7 @@ const User = new Schema({
     name: String,
     class: String,
     race: String,
-    health: Integer,
+    health: Number,
   }],
   groups: [{
     groupName: String
