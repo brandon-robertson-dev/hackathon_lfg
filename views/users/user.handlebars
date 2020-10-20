@@ -1,5 +1,12 @@
 <h1>User</h1>
-<img>Insert Image Here</img>
+{{#if user.profile_picture }}
+  <img src="{{user.profile_picture}}" alt="{{username}}'s profile picture">
+{{else}}
+  <form action="/users/{{data._id}}/profile-picture" method="post" enctype="multipart/form-data">
+    <input type="file" id="profile_picture" name="profile_picture">
+    <input type="submit" value="Upload Picture">
+  </form>
+{{/if}}
 <p>USERNAME: {{data.username}}</p>
 <p>EMAIL: {{data.email}}</p>
 <p>Bio: </p> {{!-- add bio --}}
