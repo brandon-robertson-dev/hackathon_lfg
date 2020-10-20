@@ -11,10 +11,7 @@
       <h4 class='card-title'>{{title}}</h4>
       <p class='card-text'><em>written by {{username}}</em></p>
       <p class='card-text'>{{content}}</p>
-      {{#each comments}}
-          <p class='card-text'><em>{{username}} commented:</em></p>
-          <p class='card-text'>{{comment}}</p>
-      {{/each}}
+      <p class='card-text'><em>This post has {{comments.length}} comments</em></p>
       <a href='/posts/{{_id}}' class='card-link'>Show Post</a>
     </div>
   </div>

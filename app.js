@@ -3,7 +3,7 @@ const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const expressSession = require('express-session')
 const MongoStore = require('connect-mongo')(expressSession)
-const cors = require('cors')
+// const cors = require('cors')
 const mongoose = require('mongoose')
 const exhandle = require('express-handlebars')
 const passport = require('passport')
@@ -23,7 +23,7 @@ app.set('view engine', 'handlebars')
 // app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(cookieParser())
+app.use(cookieParser())
 app.use(expressSession({
   secret: "djent_god",
   resave: false,
