@@ -1,14 +1,11 @@
-<h2>{{title}}</h2>
+<h2>{{data.title}}</h2>
 <a href='/posts'>Back to all</a>
 <div>
-  <p><em>written by {{username}}</em></p>
-  <p>{{content}}</p>
+  <p><em>written by {{data.username}}</em></p>
+  <p>{{data.content}}</p>
 </div>
-<form action='/posts/{{_id}}/comments' method='post'>
-  <label for='username'>USERNAME: </label>
-  <br>
-  <input type='text' id='username' name='username'>
-  <br>
+<form action='/posts/{{data._id}}/comments' method='post'>
+  <label for='username'>USERNAME: {{username}}</label>
   <br>
   <label for='comment'>COMMENT: </label>
   <br>
