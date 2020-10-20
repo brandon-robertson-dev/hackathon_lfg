@@ -116,29 +116,63 @@ function addCharsUtil(req) {
   let lang4 = req.Character.Languages.Four
   let lang5 = req.Character.Language.Five
   let spells = req.Character.Spells 
-  let features = req.Character.Features 
-
-
-
+  let features = req.Character.Features
   req.body.create_date = date
   req.body.modified_date = date
-  req.body.username = username
-  return new Post(req.body)
+  req.body.name = name
+  req.body.age = age 
+  req.body.race = race
+  req.body.class = dndClass
+  req.body.level = level 
+  req.body.hit_die = hit_die
+  req.body.subClass = subClass
+  req.body.strength = strength
+  req.body.dexterity = dexterity
+  req.body.constitution = constitution
+  req.body.wisdom = wisdom
+  req.body.charisma = charisma
+  req.body.intelligence = intelligence
+  req.body.arcana = arcana
+  req.body.acrobatics = acrobatics
+  req.body.animalhandling = animalhandling
+  req.body.athletics = athletics
+  req.body.deception = deception
+  req.body.history = history 
+  req.body.insight = insight
+  req.body.intimidation = intimidation
+  req.body.investigation = investigation
+  req.body.medicine = medicine
+  req.body.nature = nature
+  req.body.perception = perception
+  req.body.performance = performance
+  req.body.persuasion = persuasion
+  req.body.religion = religion
+  req.body.sleightofhand = sleightofhand
+  req.body.stealth = stealth
+  req.body.survival = survival
+  req.body.lang1 = lang1
+  req.body.lang2 = lang2 
+  req.body.lang3 = lang3
+  req.body.lang4 = lang4
+  req.body.lang5 = lang5  
+  req.body.spells = spells
+  req.body.features = features
+  return new Character(req.body)
 }
 
-// adds comment to post = makeComment
-async function addCommentUtil(req) {
-  let post = await Post.findById(req.params.postId)
-  let newComment = {
-    username: req.user.username,
-    userId: req.user._id,
-    comment: req.body.comment
-  }
-  post.comments.push(newComment)
-  return Post.findByIdAndUpdate(req.params.postId, post, {
-    new: true
-  })
-}
+// // adds comment to post = makeComment
+// async function addCommentUtil(req) {
+//   let post = await Post.findById(req.params.postId)
+//   let newComment = {
+//     username: req.user.username,
+//     userId: req.user._id,
+//     comment: req.body.comment
+//   }
+//   post.comments.push(newComment)
+//   return Post.findByIdAndUpdate(req.params.postId, post, {
+//     new: true
+//   })
+// }
 
 // deletes post from db = removePost
 function deletePostUtil(id) {
