@@ -11,6 +11,11 @@ const editUserProfile = function(req) {
   })
 }
 
+const addUserProfilePicture = function(req) {
+  req.body.modified_date = Date.now()
+  return User.findByIdAndUpdate(req.params.id, { profile_picture: req.file.path }, { new: true })
+}
+
 const deleteUserUtil = function(id) {
   return User.findByIdAndRemove(id)
 }
@@ -19,4 +24,5 @@ module.exports = {
   getUserProfile,
   editUserProfile,
   deleteUserUtil,
+  addUserProfilePicture
 }

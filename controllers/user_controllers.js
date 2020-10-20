@@ -46,14 +46,9 @@ const deleteUser = function(req, res) {
   })
 }
 
-const addProfilePicture = function(req, res) {
-  
-}
-
 module.exports = {
   getUser,
   editUser,
   updateUser,
   deleteUser,
-  addProfilePicture,
 }

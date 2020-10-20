@@ -1,6 +1,12 @@
 const Character = require("../models/characters")
 const fetch = require("node-fetch")
 
+const fetchDND = (fetchVar) => {
+  fetch("https://www.dnd5eapi.co/api/" + fetchVar)
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(console.log("Error"))
+}
 
 const fetchDNDRace = (url) => {
     fetch("https://www.dnd5eapi.co/api/races/")

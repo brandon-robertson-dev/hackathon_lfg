@@ -1,6 +1,4 @@
 const express = require('express')
-const multer = require('multer')
-const upload = multer()
 const router = express.Router()
 const user_controller = require("../controllers/user_controllers")
 const { authRedirect, authorise } = require('../middleware/auth_middleware')
@@ -21,8 +19,6 @@ router.get('/logout', logout)
 router.get('/login', authRedirect, loginNew)
 
 router.post('/login', loginCreate)
-
-router.post("/:id/profile-picture", user_controller.addProfilePicture)
 
 router.get("/:id", user_controller.getUser)
 
