@@ -19,7 +19,6 @@ const User = new Schema({
     name: String,
     class: String,
     race: String,
-    health: Integer,
   }],
   groups: [{
     groupName: String

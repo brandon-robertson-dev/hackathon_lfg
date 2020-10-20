@@ -8,6 +8,7 @@ const CharacterModel = require('../models/characters');
 const { checkIfUserLoggedIn } = require('../middleware/auth_middleware')
 const character_utl = require('../utils/characters_utilities');
 const characters = require('../models/characters');
+const json = require("../file/character_option.json")
 
 const getCharacters = function(req, res) {
   character_utl.getAllCharactersUtl(req).exec((err, character) => {
@@ -32,7 +33,8 @@ const getCharacter = function(req, res) {
 }
 
 const newCharacter = function(req,res) {
-    checkIfUserLoggedIn(req, res, 'char/form', null)
+    console.log(json)
+    checkIfUserLoggedIn(req, res, 'char/form', json)
 }
 
 const addCharacter = function(req,res) {

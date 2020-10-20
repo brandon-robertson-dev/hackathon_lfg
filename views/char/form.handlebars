@@ -1,0 +1,54 @@
+<form action='/character' method='post'>
+ <div>
+     <label>Name</label>
+     <input type='type' name='name'/>
+ </div>
+ <div>
+     <label>Age</label>
+     <input type='number' name='age' />
+ </div>
+ <div>
+     <label>Select Race</label>
+     <select name="race">
+         {{#each race}}
+         <option value={{name}}>{{name}}</option>
+         {{/each}}
+     </select>
+ </div>
+ <div>
+     <label>Select Class</label>
+     <select name="class">
+         {{#each class}}
+         <option value="{{name}}">{{name}}</option>
+         {{/each}}
+     </select>
+ </div>
+ <div>
+     <label>AbilityScores</label>
+        <input type="number" name="Strength" min="1" max="20">
+        <input type="number" name="Dexterity" min="1" max="20">
+        <input type="number" name="Constitution" min="1" max="20">
+        <input type="number" name="Intelligence" min="1" max="20">
+        <input type="number" name="Wisdom" min="1" max="20">
+        <input type="number" name="Charisma" min="1" max="20">
+ </div>
+ <div>
+    <label>Select Skills</label>
+     <select name="Skills">
+         {{#each Skills}}
+         <option value="{{name}}">{{name}}</option>
+         {{/each}}
+     </select>
+ </div>
+ <div>
+      <label>Select Languages</label>
+     <select name="Languages">
+         {{#each Languages}}
+         <option value={{name}}>{{name}}</option>
+         {{/each}}
+     </select>
+ </div>
+ <div>
+    <input type='submit' value='Post'>
+ </div>
+</form> 
