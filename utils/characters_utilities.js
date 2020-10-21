@@ -1,71 +1,6 @@
 const Character = require("../models/characters")
 const fetch = require("node-fetch")
 
-
-const fetchDNDRace = (url) => {
-    fetch("https://www.dnd5eapi.co/api/races/")
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(console.log("Error"))
-}
-
-const fetchDNDClass = (url) => {
-    fetch("https://www.dnd5eapi.co/api/classes/")
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(console.log("Error"))
-
-}
-
-const fetchDNDSubClass = (url) => {
-    fetch("https://www.dnd5eapi.co/api/subclasses/")
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(console.log("Error"))
-
-}
-
-const fetchDNDAbilityScore = (url) => {
-    fetch("https://www.dnd5eapi.co/api/ability-scores/")
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(console.log("Error"))
-
-}
-
-const fetchDNDSkills = (url) => {
-    fetch("https://www.dnd5eapi.co/api/skills/")
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(console.log("Error"))
-
-}
-
-const fetchDNDLanguages = (url) => {
-    fetch("https://www.dnd5eapi.co/api/languages/")
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(console.log("Error"))
-
-}
-
-const fetchDNDSpells = (url) => {
-    fetch("https://www.dnd5eapi.co/api/spells/")
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(console.log("Error"))
-
-}
-
-const fetchDNDFeatures = (url) => {
-    fetch("https://www.dnd5eapi.co/api/features")
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(console.log("Error"))
-
-}
-
-
 // gets all chars = getChars
 function getAllCharactersUtil(req) {
 	return Character.find()
@@ -76,69 +11,70 @@ function getCharacterByIdUtil(req) {
   return Character.findById(req.params.id)
 }
 
-// adds post to db = makePost
+// adds Chars to db = makeChar
 function addCharsUtil(req) {
-  let date = Date.now()
-  let name = req.Character.name
-  let age = req.Character.age
-  let race = req.Character.race
-  let dndClass = req.Character.class.class
-  let level = req.Character.class.level
-  let hit_die = req.Character.class.hit_die
-  let subClass = req.Character.subClass
-  let strength = req.Character.AbilityScores.Strength
-  let dexterity = req.Character.AbilityScores.Dexterity
-  let intelligence = req.Character.AbilityScores.Intelligence
-  let constitution = req.Character.AbilityScores.Constitution
-  let wisdom = req.Character.AbilityScores.Wisdom
-  let charisma = req.Character.AbilityScores.Charisma
-  let arcana = req.Character.Skills.Arcana
-  let acrobatics = req.Character.Skills.Arcobatics
-  let animalhandling = req.Character.Skills.AnimalHandling 
-  let athletics = req.Character.Skills.Athletics
-  let deception = req.Character.Skills.Deception
-  let history = req.Character.Skills.History
-  let insight = req.Character.Skills.Insight
-  let intimidation = req.Character.Skills.Intimidation
-  let investigation = req.Character.Skills.Investiation
-  let medicine = req.Character.Skills.Medicine
-  let nature = req.Character.Skills.Nature
-  let perception = req.Character.Skills.Perception 
-  let performance = req.Character.Skills.Performance 
-  let persuasion = req.Character.Skills.Persuasion
-  let religion = req.Character.Skills.Religion
-  let sleightofhand = req.Character.Skills.SleightOfHand
-  let stealth = req.Character.Skills.Stealth
-  let survival = req.Character.Skills.Survival
-  let lang1 = req.Character.Languages.First
-  let lang2 = req.Character.Languages.Second
-  let lang3 = req.Character.Languages.Third
-  let lang4 = req.Character.Languages.Four
-  let lang5 = req.Character.Language.Five
-  let spells = req.Character.Spells 
-  let features = req.Character.Features 
-
-
-
-  req.body.create_date = date
-  req.body.modified_date = date
-  req.body.username = username
-  return new Post(req.body)
-}
-
-// adds comment to post = makeComment
-async function addCommentUtil(req) {
-  let post = await Post.findById(req.params.postId)
-  let newComment = {
-    username: req.user.username,
-    userId: req.user._id,
-    comment: req.body.comment
+  // console.log('This is inside charsUtil:', req.body)
+  //name, age, race, class, str, dex, const, int, wis, char, skills, languages
+   //references not working for reasons?
+     // let dndClass = req.Character.class.class_type
+  let skills = req.body.Skills
+  // let languages = req.body.Character.Languages
+  // let abilities = req.body.Character.AbilityScores
+  
+  //destructured values not working?
+  // const {race, name, age} = req.body.Character
+  
+  //not currently being used
+  // const {level, hit_die} = req.body.Character.class_type
+  
+  const data = {
+    race: req.body.race,
+    name: req.body.name,
+    age: req.body.age,
+    strength: req.body.Strength,
+    dexterity: req.body.Dexterity,
+    intelligence: req.body.Intelligence,
+    constitution: req.body.Constitution,
+    wisdom: req.body.Wisdom,
+    charisma: req.body.Charisma,
+    
+    // lang1: languages[0].First,
+    // lang2: languages[0].Second,
+    // lang3: languages[0].Third,
+    // lang4: languages[0].Four,
+    // lang5: languages[0].Five,
+    class_type: req.body.class
   }
-  post.comments.push(newComment)
-  return Post.findByIdAndUpdate(req.params.postId, post, {
-    new: true
-  })
+  let charSkills = {}
+
+  for(let i = 0; i< skills.length; i++){
+    console.log(skills[i])
+    // charSkills.skills[i] = {skills[i]: i}
+  }
+  console.log('skills: ', charSkills)
+
+// skills.forEach((skill) => {
+//   return skill.toUpperCase(): skill
+// })
+
+  req.body = Object.assign(data)
+  // console.log('this is inside the new req:', req.body)
+  return new Character(req.body)
 }
+
+// // adds comment to post = makeComment
+// async function addCommentUtil(req) {
+//   let post = await Post.findById(req.params.postId)
+//   let newComment = {
+//     username: req.user.username,
+//     userId: req.user._id,
+//     comment: req.body.comment
+//   }
+//   post.comments.push(newComment)
+//   return Post.findByIdAndUpdate(req.params.postId, post, {
+//     new: true
+//   })
+// }
 
 // deletes post from db = removePost
 function deletePostUtil(id) {
@@ -151,4 +87,10 @@ function updatePostUtil(req) {
   return Post.findByIdAndUpdate(req.params.id, req.body, {
     new: true
   })
+}
+
+module.exports = {
+  getAllCharactersUtil,
+  getCharacterByIdUtil,
+  addCharsUtil,
 }

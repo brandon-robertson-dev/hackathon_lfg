@@ -3,7 +3,7 @@ const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const expressSession = require('express-session')
 const MongoStore = require('connect-mongo')(expressSession)
-// const cors = require('cors')
+const cors = require('cors')
 const mongoose = require('mongoose')
 const exhandle = require('express-handlebars')
 const passport = require('passport')
@@ -14,6 +14,7 @@ const app = express()
 
 const userRouter = require("./routes/user_routes")
 const postRouter = require('./routes/post_routes')
+const characterRouter = require("./routes/characters_routes")
 
 app.use(express.static("public"))
 
@@ -23,7 +24,7 @@ app.set('view engine', 'handlebars')
 // app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cookieParser())
+// app.use(cookieParser())
 app.use(expressSession({
   secret: "djent_god",
   resave: false,
@@ -57,5 +58,6 @@ mongoose.connect(
 
 app.use('/users', userRouter)
 app.use("/posts", postRouter)
+app.use("/characters", characterRouter)
 
 app.listen(port, () => console.log(`It's working on ${port}`))

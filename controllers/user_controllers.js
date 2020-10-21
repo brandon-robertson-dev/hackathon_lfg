@@ -1,5 +1,12 @@
+const express = require('express');
+const router = express.Router();
+const UserModel = require('../models/user');
 const { checkIfUserLoggedIn } = require('../middleware/auth_middleware')
-const { getUserProfile, editUserProfile, deleteUserUtil,} = require('../utils/user_utilities')
+const {
+  getUserProfile,
+  editUserProfile,
+  deleteUserUtil
+} = require('../utils/user_utilities')
 
 const getUser = function(req, res) {
   getUserProfile(req).exec((err, user) => {
@@ -7,6 +14,8 @@ const getUser = function(req, res) {
       res.status(400)
       return res.send("User not found")
     }
+    // console.log(user)
+    // res.render('users/user', user)
     checkIfUserLoggedIn(req, res, 'users/user', user)
   })
 }
@@ -17,6 +26,8 @@ const updateUser = function(req,res) {
       res.status(400)
       return res.send("User not found")
     }
+    // console.log(user)
+    // res.render('users/form', user)
     checkIfUserLoggedIn(req, res, 'users/form', user)
   })
 }
@@ -29,6 +40,7 @@ const editUser = function(req, res) {
         error: err.message
       })
     }
+    // res.send(user)
     checkIfUserLoggedIn(req, res, 'users/user', user)
   })
 }
@@ -46,14 +58,9 @@ const deleteUser = function(req, res) {
   })
 }
 
-const addProfilePicture = function(req, res) {
-  
-}
-
 module.exports = {
-  getUser,
-  editUser,
-  updateUser,
-  deleteUser,
-  addProfilePicture,
+    getUser,
+    editUser,
+    updateUser,
+    deleteUser
 }
