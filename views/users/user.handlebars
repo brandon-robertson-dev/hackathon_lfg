@@ -1,9 +1,17 @@
 <h1>User</h1>
-<img>Insert Image Here</img>
+{{!-- {{#if data.profile_picture}} --}}
+  <img src="/images/{{data.profile_picture}}" width="100">
+{{!-- {{/if}} --}}
+{{!-- {{#if user}} --}}
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      <input type="file" id="profile_picture" name="profile_picture">
+      <input type="submit" value="Upload Picture">
+    </form>
+{{!-- {{/if}} --}}
 <p>USERNAME: {{data.username}}</p>
 <p>EMAIL: {{data.email}}</p>
 <p>Bio: </p> {{!-- add bio --}}
 <p>Characters: {{data.characters}}</p>
 <a href="/characters/new">Create Character</a>
 <p>Groups: {{data.groups}}</p>
-<p>Comments: {{data.comments}}</p>
+<a href="/users/{{id}}/comments">Comments</a>

@@ -30,7 +30,8 @@ function loginCreate(req, res, next) {
   const loginFunc = passport.authenticate('local',
   {
     successRedirect: '/posts',
-    failureRedirect: 'user/login'
+    failureRedirect: '/users/login'
+
   })
   loginFunc(req, res, next)
 }

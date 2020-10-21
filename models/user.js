@@ -19,6 +19,7 @@ const User = new Schema({
     name: String,
     class: String,
     race: String,
+
   }],
   groups: [{
     groupName: String

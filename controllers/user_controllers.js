@@ -2,14 +2,11 @@ const express = require('express');
 const router = express.Router();
 const UserModel = require('../models/user');
 const { checkIfUserLoggedIn } = require('../middleware/auth_middleware')
-const {
-  getUserProfile,
-  editUserProfile,
-  deleteUserUtil
-} = require('../utils/user_utilities')
+const { getUserComments, getUserProfile, editUserProfile, deleteUserUtil,} = require('../utils/user_utilities')
+
 
 const getUser = function(req, res) {
-  getUserProfile(req).exec((err, user) => {
+  let user = getUserProfile(req).exec((err, user) => {
     if (err) {
       res.status(400)
       return res.send("User not found")
@@ -17,6 +14,16 @@ const getUser = function(req, res) {
     // console.log(user)
     // res.render('users/user', user)
     checkIfUserLoggedIn(req, res, 'users/user', user)
+  })
+}
+
+const getComments = function(req, res) {
+  getUserComments(req.user.id).exec((err, comments) => {
+    if(err) {
+      res.status(400)
+      return res.send("Comments not found")
+    }
+    checkIfUserLoggedIn(req, res, 'users/comments', comments)
   })
 }
 
@@ -59,8 +66,10 @@ const deleteUser = function(req, res) {
 }
 
 module.exports = {
-    getUser,
-    editUser,
-    updateUser,
-    deleteUser
+  getUser,
+  editUser,
+  updateUser,
+  deleteUser,
+  getComments
+
 }

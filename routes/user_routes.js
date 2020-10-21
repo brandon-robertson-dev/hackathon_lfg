@@ -7,7 +7,7 @@ const {
   registerNew,
   logout,
   loginCreate,
-  loginNew
+  loginNew,
 } = require('../controllers/auth_controller')
 
 router.get('/register', authRedirect, registerNew)
@@ -26,8 +26,10 @@ router.get("/:id/edit", user_controller.updateUser)
 
 router.put("/:id/edit", user_controller. editUser)
 
+router.get("/:id/comments", user_controller.getComments)
+
 router.delete("/:id/delete", user_controller.deleteUser)
 
-//app.delete("/:id", deleteUser)
+
 
 module.exports = router

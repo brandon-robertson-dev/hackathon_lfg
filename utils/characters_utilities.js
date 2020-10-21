@@ -1,6 +1,7 @@
 const Character = require("../models/characters")
 const fetch = require("node-fetch")
 
+
 // gets all chars = getChars
 function getAllCharactersUtil(req) {
 	return Character.find()
@@ -62,19 +63,7 @@ function addCharsUtil(req) {
   return new Character(req.body)
 }
 
-// // adds comment to post = makeComment
-// async function addCommentUtil(req) {
-//   let post = await Post.findById(req.params.postId)
-//   let newComment = {
-//     username: req.user.username,
-//     userId: req.user._id,
-//     comment: req.body.comment
-//   }
-//   post.comments.push(newComment)
-//   return Post.findByIdAndUpdate(req.params.postId, post, {
-//     new: true
-//   })
-// }
+
 
 // deletes post from db = removePost
 function deletePostUtil(id) {

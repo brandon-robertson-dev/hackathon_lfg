@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/jquery.min.js"></script>
     <script src="/js/popper.min.js"></script>
@@ -11,17 +12,41 @@
     <title>DND App</title>
 </head>
 <body>
-  <nav>
-    <a href="/posts">Home</a>
-    {{#if username}}
-      <a href="/users/{{id}}">Profile</a>
-      <a href="">Groups</a>
-      <a href="/users/logout">Logout</a>
-      <p>{{username}} is logged in</p>
-    {{else}}
-      <a href="/users/login">Login</a>
-    {{/if}}
-  </nav>
+  <div class="jumbotron .jumbotron-fluid">
+    <div class="container">
+      <h1>DND App</h1>
+    </div>
+    <nav class="navbar justify-content-center">
+      <ul class="nav" >
+        <li class="nav-item">
+          <a class="nav-link" href="/posts">Home</a>
+        </li>
+        {{#if username}}
+          <li class="nav-item">
+            <a class="nav-link" href="/users/{{id}}">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="">Groups</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/users/logout">Logout</a>
+          </li>
+          <li class="nav-item">
+            <p lass="nav-link">{{username}} is logged in</p>
+          </li>
+        {{else}}
+          <li class="nav-item">
+            <a class="nav-link" href="/users/login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/users/register">Register</a>
+          </li>
+        {{/if}}
+      </ul>
+    </nav>
+  </div>
+
+
   {{{body}}}
 
 </body>

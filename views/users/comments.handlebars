@@ -1,0 +1,7 @@
+<h2>{{username}}'s Comments</h2>
+
+{{#each data}}
+  {{#each comments}}
+    {{this.userId}} {{this.comment}}
+  {{/each}}
+{{/each}}

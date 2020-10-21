@@ -1,4 +1,16 @@
 body {
+  /* margin: 0px 200px; */
+  text-align: center;
+}
+/* 
+.special-card {
+  background-color: rgba(245, 245, 245, 1);
+  opacity: .7;
+} */
+
+.marginsides {
+  margin-left: 40px;
+  margin-right: 40px;
     background-image: url(./download.jpeg);
     background-size: cover;
 }
