@@ -31,6 +31,7 @@ function loginCreate(req, res, next) {
   {
     successRedirect: '/posts',
     failureRedirect: '/users/login'
+
   })
   loginFunc(req, res, next)
 }

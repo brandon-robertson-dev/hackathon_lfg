@@ -11,4 +11,11 @@ body {
 .marginsides {
   margin-left: 40px;
   margin-right: 40px;
+    background-image: url(./download.jpeg);
+    background-size: cover;
+}
+
+* {
+    font-weight: bolder;
+    font-size: 1.5rem;
 }

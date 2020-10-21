@@ -1,6 +1,6 @@
 const User = require("../models/user")
 const Post = require("../models/post")
-const { db } = require("../models/user")
+
 
 const getUserProfile = function(req) {
   return User.findById(req.params.id)
@@ -22,9 +22,11 @@ const deleteUserUtil = function(id) {
   return User.findByIdAndRemove(id)
 }
 
+
 const getUserComments = function(id) {
   return Post.find({ "comments.userId" : id }).lean()
 }
+
 
 module.exports = {
   getUserProfile,
@@ -33,6 +35,3 @@ module.exports = {
   addUserProfilePicture,
   getUserComments
 }
-// db.posts.find( {}, { comments: { $elemMatch: { $eq: { "5f8e392e50626a09b6c9052f" } } } } )
-
-// db.posts.find({ "comments.userId" : "5f8e392e50626a09b6c9052f" }).lean()

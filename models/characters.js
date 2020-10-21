@@ -6,12 +6,11 @@ const Character = new Schema({
   name: String,
   age: Number,
    race: String,
-   class: {
-    class: String,
+   class_type: {
+    class_type: String,
     level: Number,
     hit_die: Number
    },
-   subClass: String,
    AbilityScores: [{
        Strength: Number,
        Dexterity: Number,
@@ -46,12 +45,6 @@ const Character = new Schema({
        Third: String,
        Forth: String,
        Fifth: String
-   }],
-   Spells: [{
-
-   }],
-   Features: [{
-
    }],
    
 }); 

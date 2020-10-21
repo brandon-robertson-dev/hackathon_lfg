@@ -1,0 +1,82 @@
+<form action='/characters/new' method='post'>
+ <div>
+     <label>Name</label>
+     <input type='text' name='name'/>
+ </div>
+ <div>
+     <label>Age</label>
+     <input type='number' name='age'/>
+ </div>
+ <div>
+     <label>Select Race</label>
+     <select name="race">
+         {{#each data.race}}
+         <option value="{{name}}">{{name}}</option>
+         {{/each}}
+     </select>
+ </div>
+ <div>
+     <label>Select Class</label>
+     <select name="class">
+         {{#each data.class_type}}
+         <option value="{{name}}">{{name}}</option>
+         {{/each}}
+     </select>
+ </div>
+ <div>
+     <label>AbilityScores</label>
+     <ul>
+         <li>Strength</li>
+        <input type="number" name="Strength" min="1" max="20">
+        <li>Dexterity</li>
+        <input type="number" name="Dexterity" min="1" max="20">
+        <li>Constitution</li>
+        <input type="number" name="Constitution" min="1" max="20">
+        <li>Intelligence</li>
+        <input type="number" name="Intelligence" min="1" max="20">
+        <li>Wisdom</li>
+        <input type="number" name="Wisdom" min="1" max="20">
+        <li>Charisma</li>
+        <input type="number" name="Charisma" min="1" max="20">
+     </ul>
+ </div>
+ <div>
+    <label>Select Skills</label>
+     <select name="Skills">
+         {{#each data.Skills}}
+         <option value="{{name}}">{{name}}</option>
+         {{/each}}
+     </select>
+      <select name="Skills">
+         {{#each data.Skills}}
+         <option value="{{name}}">{{name}}</option>
+         {{/each}}
+     </select>
+      <select name="Skills">
+         {{#each data.Skills}}
+         <option value="{{name}}">{{name}}</option>
+         {{/each}}
+     </select>
+ </div>
+ <div>
+      <label>Select Languages</label>
+     <select name="Languages">
+         {{#each data.Languages}}
+         <option value="{{name}}">{{name}}</option>
+         {{/each}}
+     </select>
+      <select name="Languages">
+         {{#each data.Languages}}
+         <option value="{{name}}">{{name}}</option>
+         {{/each}}
+     </select>
+      <select name="Languages">
+         {{#each data.Languages}}
+         <option value="{{name}}">{{name}}</option>
+         {{/each}}
+     </select>
+ </div>
+ <div>
+    <input type='submit' value='Post'>
+ </div>
+</form> 
