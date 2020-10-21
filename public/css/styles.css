@@ -1,6 +1,8 @@
 body {
   /* margin: 0px 200px; */
   text-align: center;
+  background-image: url(./download.jpeg);
+  background-size: cover;
 }
 /* 
 .special-card {
@@ -11,8 +13,7 @@ body {
 .marginsides {
   margin-left: 40px;
   margin-right: 40px;
-    background-image: url(./download.jpeg);
-    background-size: cover;
+   
 }
 
 * {

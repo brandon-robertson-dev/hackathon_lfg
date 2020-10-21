@@ -15,6 +15,9 @@ const User = new Schema({
     type: String,
     require: true
   },
+  profile_picture: {
+    type: String
+  },
   characters: [{
     name: String,
     class: String,

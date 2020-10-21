@@ -17,7 +17,6 @@ function checkIfUserLoggedIn(req, res, template, templateData) {
   if(req.user){
     let user = {username: req.user.username, id: req.user._id}
     let combinedObj = {...user, ...data}
-    console.log(combinedObj.data[0])
     res.render(template, combinedObj)
   } else {
     res.render(template, data)
